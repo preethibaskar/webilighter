@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "Highlighter",
+  "description": "highligh and retreive text.",
+  "version": "1.0",
+
+  "background": {
+        "scripts": ["background.js"]
+    },
+
+  "permissions": [
+  	 "tabs", "http://*/*", "https://*/*", "storage","activeTab"
+  ],
+
+  "browser_action": {
+  	"default_title": "Highlighter",
+    "default_icon": "hlite.png"
+  },
+   "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["hload.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
