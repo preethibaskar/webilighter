@@ -10,13 +10,15 @@ var contents = [];
         console.log('To highlight', obj[url]);
         contents = JSON.parse(obj[url])
         for(i =0;i< contents.length;i++){
-        	var range = window.getSelection(window.find(contents[i])).getRangeAt(0);
+            var sel = window.getSelection && window.getSelection(window.find(contents[i]));
+            if(sel && sel.rangeCount > 0){
+        	var range = sel.getRangeAt(0);
         	window.getSelection().removeAllRanges();
         	var wrapper = document.createElement('span');
 			wrapper.style.cssText = "background-color: #FFFF66";
 			wrapper.appendChild(range.extractContents());	
 			range.insertNode(wrapper);
-
+        }
         }   
     });
 //}
